@@ -21,6 +21,12 @@ def rotate_hex_string_right_one(hex_string):
 
     return rotated_hex_string
 
+def get_transaction_identifier(hex_string):
+    return hex_string[0:8]
+
+def get_rotated_RNDA(hex_string):
+    return hex_string[8:40]
+"""
 key_hex = "00000000000000000000000000000000"
 
 key = binascii.unhexlify(key_hex)
@@ -54,3 +60,5 @@ print(RndA_rotated)
 RndA = rotate_hex_string_right_one(RndA_rotated)
 
 print("RndA: ",RndA)
+
+"""

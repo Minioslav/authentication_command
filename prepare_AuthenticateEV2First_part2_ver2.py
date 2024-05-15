@@ -22,16 +22,20 @@ def decrypt_aes_cbc(key_hex, ciphertext_hex):
 
 def rotate_hex_string_left_one(hex_string):
   """
-  Funkcja przesuwa jeden element łańcucha heksadecymalnego na koniec i resztę w lewo.
+   Rotates a hexadecimal string to the left by one byte.
 
-  Argumenty:
-    hex_string: Ciąg znaków heksadecymalnych reprezentujący dane.
+    Parameters:
+        hex_string (str): A string of hexadecimal characters representing data.
 
-  Zwraca:
-    Ciąg znaków heksadecymalnych reprezentujący przesunięte dane.
+    Returns:
+        str: A string of hexadecimal characters with the first byte moved to the end.
+
+    Raises:
+        ValueError: If the length of `hex_string` is not even.
+
   """
   if len(hex_string) % 2 != 0:
-    raise ValueError("Długość łańcucha heksadecymalnego musi być parzysta.")
+    raise ValueError("invalid lenth")
 
  
   first_byte = hex_string[:2]
@@ -76,13 +80,16 @@ def generate_command_hex(data_hex):
 
 def generate_random_hex_string(length=16):
   """
-  Funkcja generuje losowy łańcuch heksadecymalny o podanej długości.
+  Generates a random hexadecimal string of the specified length.
 
-  Argumenty:
-    length (opcjonalnie): Długość łańcucha heksadecymalnego w bajtach (domyślnie 16).
+    Parameters:
+        length (int, optional): The length of the hexadecimal string in bytes (default is 16).
 
-  Zwraca:
-    Ciąg znaków heksadecymalnych reprezentujący losowy łańcuch.
+    Returns:
+        str: A string of hexadecimal characters representing random data.
+
+    Raises:
+        ValueError: If the `length` is not positive.
   """
   if length <= 0:
     raise ValueError("Długość łańcucha heksadecymalnego musi być dodatnia.")
@@ -98,6 +105,7 @@ def generate_random_hex_string(length=16):
 
   return random_hex_string 
 
+"""
 # Example usage
 ciphertext_hex = "7C 07 1B 7B 6B 7F C2 AE D6 7F BE AC 77 D6 6C 30 "
 expected_plaintext_hex = "B9E2FC789B64BF237CCCAA20EC7E6E48"
@@ -126,3 +134,4 @@ print("Rotated plaintext:", rotated_hex_string)
 print("Encrypted concatenated data:", encrypted_data_hex)
 print("Random challenge: ", random_data_hex)
 print("Command:", command_hex)
+"""

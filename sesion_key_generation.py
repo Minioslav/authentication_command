@@ -19,7 +19,7 @@ def generate_sesion_key(key, RNDA, RNDB, option):
     Raises:
         ValueError: If `option` is not 1 or 2, or if `key` length is invalid.
      """
-
+    key = binascii.unhexlify(key)
     if option not in [1, 2]:
         raise ValueError("Option must be 1 or 2.")
 
@@ -38,7 +38,7 @@ def generate_sesion_key(key, RNDA, RNDB, option):
 
     return ses_key
 
-
+"""
 RNDA = "3F2506494F3E920D78AC1F4F6CE9A65E"
 
 RNDB = "5F8BB23F38A40AFEBAEAAC5DEFA44E66"
@@ -49,12 +49,9 @@ SesAuthENCKey = generate_sesion_key(key, RNDA, RNDB, 1)
 
 print(SesAuthENCKey)
 
-if SesAuthENCKey=="1309C877509E5A215007FF0ED19CA564":
-    print("to dziala")
-
 SesAuthMACKey = generate_sesion_key(key, RNDA, RNDB, 2)
 
 print(SesAuthMACKey)
 
-if SesAuthMACKey=="4C6626F5E72EA694202139295C7A7FC7":
-    print("to dziala")
+
+"""
